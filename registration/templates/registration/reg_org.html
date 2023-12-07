@@ -12,7 +12,7 @@
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Регистрация пользователя</legend>
+                <legend class="border-bottom mb-4">Регистрация вашего заведения</legend>
                 {{ form|crispy }}
             </fieldset>
             <div class="form-group">
@@ -25,7 +25,7 @@
             </small>
             <br>
             <small class="text-muted">
-                Хотите зарегистрировать своё заведение? <a class="ml-2" href="{% url 'reg_org' %}">Регистрация</a>
+                Хотите зарегистрировать своё заведение? <a class="ml-2" href="#">Регистрация</a>
             </small>
         </div>
     </div>

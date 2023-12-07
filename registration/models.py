@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser, Group, Permission
+from django.contrib.auth.models import AbstractUser, Group, Permission, User
 
 class Customer(AbstractUser):
     email = models.EmailField(unique=True)
@@ -12,7 +12,6 @@ class Customer(AbstractUser):
         verbose_name='user permissions',
         blank=True,
     )
-
 
     def __str__(self):
         return self.username
@@ -32,3 +31,9 @@ class Organisation(models.Model):
         return self.name
 
 
+class Profile(models.Model):
+    user = models.OneToOneField(Customer, on_delete=models.CASCADE)
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+
+    def __str__(self):
+        return f'{self.user.username} Profile'
