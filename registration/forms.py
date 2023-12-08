@@ -10,12 +10,10 @@ class UserRegisterForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1', 'password2']
 
-class OrganisationRegisterForm(forms.ModelForm):
-    password1 = forms.CharField(widget=forms.PasswordInput, label='Password')
-    password2 = forms.CharField(widget=forms.PasswordInput, label='Confirm Password')
+class OrganisationForm(forms.ModelForm):
     class Meta:
         model = Organisation
-        fields = ['name', 'email', 'address','tables','working_hours','cuisine', 'password1', 'password2']
+        fields = ['name', 'email', 'address', 'tables', 'working_hours', 'cuisine']
 
 class UserLoginForm(AuthenticationForm):
     class Meta:

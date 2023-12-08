@@ -12,7 +12,7 @@ urlpatterns = [
     path('', include('reservation.urls')),
     path('reservation/',include('reservation.urls')),
     path('register/',reg_views.register, name = 'register'),
-    path('register_org/',reg_views.register_org, name = 'reg_org'),
+    path('register_org/',reg_views.register_organisation, name = 'reg_org'),
     path('profile/', reg_views.profile, name='profile'),
     path('login/', reg_views.CustomLoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='registration/logout.html'), name='logout'),

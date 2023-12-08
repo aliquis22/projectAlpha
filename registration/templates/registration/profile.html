@@ -7,6 +7,12 @@
         <div class="media-body">
           <h2 class="account-heading">{{ user.username }}</h2>
           <p class="text-secondary">{{ user.email }}</p>
+          <h3>Заведения пользователя:</h3>
+          <ul>
+            {% for organisation in user.organisations_owned.all %}
+              <li>{{ organisation.name }} - {{ organisation.address }}</li>
+            {% endfor %}
+          </ul>
         </div>
       </div>
       <!-- Здесь будет форма -->
