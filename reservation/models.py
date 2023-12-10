@@ -1,12 +1,14 @@
 from django.db import models
 from registration.models import Customer, Organisation
 
-class Booking(models.Model):
-    guest = models.ForeignKey(Customer, on_delete = models.CASCADE)
-    place = models.ForeignKey(Organisation, on_delete = models.CASCADE)
-    table = models.IntegerField()
-    booking_time = models.DateTimeField()
+
+class Reservation(models.Model):
+    organisation = models.ForeignKey(Organisation, on_delete=models.CASCADE, null=True)
+    table = models.PositiveIntegerField(default=None)  # default=None, чтобы избежать ошибки с non-nullable полем
+    date = models.DateField()
+    time = models.TimeField()
+    name = models.CharField(max_length=255)
+    phone = models.CharField(max_length=15)
 
     def __str__(self):
-        return f"Бронирование {self.id} для {self.guest} в {self.place}"
-
+        return f'{self.name} {self.organisation.name} {self.time}'

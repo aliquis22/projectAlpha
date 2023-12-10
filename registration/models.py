@@ -27,7 +27,6 @@ class Organisation(models.Model):
     owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='organisations_owned')
 
     def save(self, *args, **kwargs):
-        # Устанавливаем владельца по умолчанию только при создании новой организации
         if not self.pk and not self.owner:
             default_user, created = User.objects.get_or_create(username='здесь_ваше_имя_пользователя')
             self.owner = default_user
@@ -35,6 +34,7 @@ class Organisation(models.Model):
 
     def __str__(self):
         return self.name
+
 class Profile(models.Model):
     user = models.OneToOneField(Customer, on_delete=models.CASCADE)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')

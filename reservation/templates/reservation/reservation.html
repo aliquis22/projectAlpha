@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "reservation/base_generic.html" %}
 
-</body>
-</html>
+{% block content %}
+    <h1>Бронирование в {{ organisation.name }}</h1>
+    <p>{{ organisation.address }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ reservation_form.as_p }}
+        <button type="submit">Забронировать</button>
+    </form>
+    <a href="{% url 'index' %}">Вернуться к списку заведений</a>
+{% endblock %}
