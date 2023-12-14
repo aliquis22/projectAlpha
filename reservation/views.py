@@ -24,3 +24,14 @@ def reservation(request, pk):
         reservation_form = ReservationForm(organisation=organisation)
     return render(request, 'reservation/reservation.html', {'organisation': organisation, 'reservation_form': reservation_form})
 
+def user_organisations(request):
+    user = request.user
+    organisations = user.organisations_owned.all()
+    return render(request, 'reservation/user_organisations.html', {'organisations': organisations})
+
+def org_profile(request, organisation_id):
+    organisation = get_object_or_404(Organisation, id = organisation_id)
+    return render(request, 'reservation/org_profile.html', {'organisation': organisation})
+
+
+

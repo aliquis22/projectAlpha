@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    {% block title %}<title>Local Library</title>{% endblock %}
+    {% block title %}<title>TomskRE</title>{% endblock %}
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -23,9 +23,12 @@
             <ul class="sidebar-nav">
               <li><a href="{% url 'index' %}">Заведения</a></li>
               <li><a href="{% url 'about' %}">О нас</a></li>
-              <li><a href="{% url 'register' %}">Регистрация</a></li>
             {% if user.is_authenticated %}
-            	<a class="nav-item nav-link" href="{% url 'profile' %}">Профиль</a>
+            	<a class="nav-item nav-link" href="{% url 'profile' %}">Профиль</a><br>
+                {% if user.organisations_owned.all %}
+                <li><a href="{% url 'user_organisations' %}">Организации</a></li>
+                {% endif %}
+                <a class="nav-item nav-link" href="{% url 'reg_org' %}">Регистрация организации</a><br>
             	<a class="nav-item nav-link" href="{% url 'logout' %}">Выход</a>
           	{% else %}
             	<a class="nav-item nav-link" href="{% url 'login' %}">Вход</a>
