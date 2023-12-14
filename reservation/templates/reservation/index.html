@@ -1,0 +1,15 @@
+{% extends "reservation/base_generic.html" %}
+
+{% block content %}
+    <h1>edatomsk</h1>
+
+    <p>Добро пожаловать на <em>edatomsk</em></p>
+
+    <h2>Что вы можете сделать здесь</h2>
+    <h2>Заведения Томска</h2>
+    <ul>
+        {% for org in all_organisations %}
+            <li><a href="{% url 'reservation' pk=org.pk %}">{{ org.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

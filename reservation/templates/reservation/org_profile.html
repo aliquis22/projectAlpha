@@ -1,0 +1,14 @@
+{% extends "reservation/base_generic.html" %}
+
+{% block content %}
+    <div class="content-section">
+        <h1>{{ organisation.name }}</h1>
+        <p><strong>Email:</strong> {{ organisation.email }}</p>
+        <p><strong>Адрес:</strong> {{ organisation.address }}</p>
+        <p><strong>Количество столов:</strong> {{ organisation.tables }}</p>
+        <p><strong>Время работы:</strong> {{ organisation.working_hours }}</p>
+        <p><strong>Кухня:</strong> {{ organisation.cuisine }}</p>
+        <p><strong>Владелец:</strong> {{ organisation.owner.username }}</p>
+        <!-- Здесь можешь добавить дополнительные поля из модели Organisation -->
+    </div>
+{% endblock %}
